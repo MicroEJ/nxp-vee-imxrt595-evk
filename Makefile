@@ -1,5 +1,5 @@
 #
-# Copyright 2023 NXP
+# Copyright 2023-2024 NXP
 #
 # SPDX-License-Identifier: BSD-3-Clause
 #
@@ -24,20 +24,26 @@ BASE_DIR=$(shell pwd)
 endif
 
 define del_file
-	$(if $(filter $(OS),Windows_NT),$(if $(wildcard $(1)),cmd /c DEL /f /q $(1),),rm -f $(1))
+	$(if $(filter $(OS),Windows_NT),$(if $(wildcard $(1)),cmd /c DEL /f /q $(subst /,\\,$(1)),),rm -f $(1))
 endef
 
 define del_dir
 	$(if $(filter $(OS),Windows_NT),$(if $(wildcard $(1)),cmd /c RD /s /q $(subst /,\\,$(1)),),rm -fr $(1))
 endef
 
-BSP_DIR=$(BASE_DIR)/nxpvee-mimxrt595-evk-round-bsp
-PLAT_DIR=$(BASE_DIR)/MIMXRT595-evk_platform-CM4hardfp_GCC48-1.2.0
-APP_DIR=$(BASE_DIR)/nxpvee-mimxrt595-evk-round-apps
-FP_DIR=$(BASE_DIR)/nxpvee-mimxrt595-evk-round-fp
-MOCK_DIR=$(BASE_DIR)/nxpvee-mimxrt595-evk-round-mock
-CONF_DIR=$(BASE_DIR)/nxpvee-mimxrt595-evk-round-configuration
-VAL_DIR=$(BASE_DIR)/nxpvee-mimxrt595-evk-round-validation
+BSP_DIR=$(BASE_DIR)/bsp
+PLAT_DIR=$(BASE_DIR)/microej/MIMXRT595-evk_platform-CM4hardfp_GCC48-2.0.0
+APP_DIR=$(BASE_DIR)/microej/apps
+FP_DIR=$(BASE_DIR)/microej/front-panel
+MOCK_DIR=$(BASE_DIR)/microej/mock
+CONF_DIR=$(BASE_DIR)/microej/vee-port-configuration
+VAL_DIR=$(BASE_DIR)/microej/validation
+
+TEST_DIR.java.test.core=$(VAL_DIR)/core/java-testsuite-runner-core
+TEST_DIR.java.test.ui=$(VAL_DIR)/ui/ui3/java-testsuite-runner-ui3
+TEST_DIR.java.test.gpio=$(VAL_DIR)/gpio/gpio-testsuite-runner
+
+VALIDATIONS?=core gpio ui
 
 ifeq ($(ECLIPSE_HOME_VAR),)
 $(error Define ECLIPSE_HOME_VAR to i.e. ~/MicroEJ/MicroEJ-SDK-21.11/rcp/)
@@ -49,8 +55,11 @@ endif
 
 ifeq ($(strip $(PUBLISH)),1)
 	PUBLISH_ARTIFACTS=-Dskip.publish=false
+	PUBLISH_MODE=release
+	MODULE_REPOSITORY_SETTINGS=
 else
 	PUBLISH_ARTIFACTS=
+	PUBLISH_MODE=
 endif
 
 USAGE?=eval
@@ -71,7 +80,7 @@ PROJS = nxpvee-ui
 include Makefile.inc
 
 help:
-	@echo "nxpvee-mimxrt1170-evk build system:"
+	@echo "nxp-vee-rt595 build system:"
 	@echo ""
 	@echo "Valid targets are:"
 	@echo "    nxpvee-ui.prj            build complete UI project"
@@ -86,7 +95,7 @@ help:
 	@echo ""
 	@echo "Valid options are:"
 	@echo "    S2S_TTY                  set validation serial port i.e. ttyACM0"
-	@echo "    VALIDATIONS='[option]+'  overrides validation projetcs to be run 
+	@echo "    VALIDATIONS='[option]+'  overrides validation projects to be run {core gpio ui}"
 	@echo "    VERBOSE=1                compile in verbose mode"
 	@echo "    QUIET=1                  compile in quiet mode"
 	@echo "    USAGE=[eval|prod]        compile in eval or prod"

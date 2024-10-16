@@ -1,0 +1,54 @@
+{
+  "version": 7,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 27
+  },
+  "configurePresets": [
+    {
+      "name": "preset-env",
+      "displayName": "present-env",
+      "hidden": true,
+      "toolchainFile": "../../../../mcux-sdk/core/tools/cmake_toolchain_files/armgcc.cmake",
+      "environment": {
+        "ARMGCC_DIR": "$penv{ARMGCC_DIR}",
+        "SdkRootDirPath": "${sourceDir}/../../../mcux-sdk/"
+      },
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/${presetName}",
+      "cacheVariables": {
+        "DEBUG_CONSOLE": "UART",
+        "LANGUAGE": "C",
+        "LIBRARY_TYPE": "NOLIB"
+      }
+    },
+    {
+      "name": "debug",
+      "displayName": "debug",
+      "inherits": "preset-env",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "debug"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "release",
+      "inherits": "preset-env",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug",
+      "displayName": "debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "release",
+      "displayName": "release",
+      "configurePreset": "release"
+    }
+  ]
+}

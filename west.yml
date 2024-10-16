@@ -8,11 +8,15 @@ manifest:
   projects:
     - name: mcux-sdk
       remote: nxp-mcuxpresso
-      revision: MCUX_2.12.0
-      path: nxp-vee-rt595/nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/core
-    - name: FreeRTOS-Kernel
-      revision: MCUX_2.12.0
+      revision: 5fb76f2d51ac20
+      path: nxp-vee-rt595/bsp/mcux-sdk/core
+    - name: CMSIS_5
+      revision: MCUX_2.15.000
       remote: nxp-mcuxpresso
-      path: nxp-vee-rt595/nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/rtos/freertos/freertos-kernel
+      path: nxp-vee-rt595/bsp/mcux-sdk/core/CMSIS
+    - name: FreeRTOS-Kernel
+      revision: MCUX_2.15.100
+      remote: nxp-mcuxpresso
+      path: nxp-vee-rt595/bsp/mcux-sdk/rtos/freertos/freertos-kernel
   self:
     path: nxp-vee-rt595

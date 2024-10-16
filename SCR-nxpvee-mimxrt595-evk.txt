@@ -1,7 +1,9 @@
 Release Name: NXPVEE-MIMXRT595-EVK
-Release Version: 1.2.0
-Date: December 2023
-Package License: EULA_EVAL.txt v21 December 2022
+Release Version: 2.0.0
+Date: October 2024
+Package License: LICENSE.txt
+Outgoing License: LA_OPT_NXP_Software_License v57 July 2024, Section 2.3 applies
+
 
 SDK_Peripheral_Driver      Name: SDK Peripheral Driver
                            Version: 2.x.x
@@ -11,7 +13,7 @@ SDK_Peripheral_Driver      Name: SDK Peripheral Driver
                            Description: Peripheral drivers are designed for
                            the most common use cases identified for the
                            underlying hardware block.
-                           Location: nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/core/devices/<device>/drivers
+                           Location: bsp/mcux-sdk/core/devices/<device>/drivers
                            Origin: NXP (BSD-3-Clause)
 
 SDK_Examples               Name: SDK examples
@@ -23,7 +25,7 @@ SDK_Examples               Name: SDK examples
                            Description: SDK out of box examples to show how
                            to use peripheral drivers and integrate
                            middleware.
-                           Location: nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/core/boards/<board>
+                           Location: bsp/mcux-sdk/core/boards/<board>
                            Origin: NXP (BSD-3-Clause)
 
 SDK_Device                 Name: SDK SoC files
@@ -33,55 +35,55 @@ SDK_Device                 Name: SDK SoC files
                            Format: source code, linker files
                            Description: Device system files, template files,
                            IDE related startup and linker files.
-                           Location: nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/core/devices/<device>
+                           Location: bsp/mcux-sdk/core/devices/<device>
                            Origin: NXP (BSD-3-Clause)
 
 cmsis                      Name: CMSIS
                            Version: 5.8.0
                            Outgoing License: Apache License 2.0
-                           License File: nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/core/CMSIS/LICENSE.txt
+                           License File: bsp/mcux-sdk/core/CMSIS/LICENSE.txt
                            Format: source code
                            Description: Vendor-independent hardware
                            abstraction layer for microcontrollers that are
                            based on Arm Cortex processors, distributed by
                            ARM. cores
-                           Location: nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/core/CMSIS
+                           Location: bsp/mcux-sdk/core/CMSIS
                            Origin: ARM (Apache-2.0) -
                            https://github.com/ARM-software/CMSIS_5/releases/t
                            ag/5.8.0
 
-freertos_kernel            Name: FreeRTOS
-                           Version: 10.2.1
+freertos-kernel            Name: FreeRTOS kernel
+                           Version: 10.5.1
                            Outgoing License: MIT
-                           License File: nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/rtos/freertos/freertos-kernel/LICENSE.md
+                           License File: bsp/mcux-sdk/rtos/freertos/freertos-kernel/LICENSE.md
                            Format: source code
                            Description: Open source RTOS kernel for small
                            devices
-                           Location: nxpvee-mimxrt595-evk-round-bsp/sdk_overlay/rtos/amazon-freertos/freertos_kernel
+                           Location: bsp/sdk_overlay/rtos/freertos/freertos-kernel
                            Origin: Amazon (MIT)
-                           Url: https://aws.amazon.com/freertos/
+                           Url: https://github.com/FreeRTOS/FreeRTOS-Kernel
 
 cmsis_drivers              Name: SDK CMSIS Peripheral Drivers
                            Version: 2.x.x
                            Outgoing License: Apache License 2.0
-                           License File: nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/core/CMSIS/LICENSE.txt
+                           License File: bsp/mcux-sdk/core/CMSIS/LICENSE.txt
                            Format: source code
                            Description: CMSIS Peripheral drivers are designed
                            to provide hardware independent APIs which make
                            application reusable across a wide range of
                            supported microcontroller devices.
-                           Location: nxpvee-mimxrt595-evk-round-bsp/mcux-sdk/core/cmsis_drivers
+                           Location: bsp/mcux-sdk/core/cmsis_drivers
                            Origin: NXP (Apache License 2.0)
 
 vglite                     Name: vglite
-                           Version: 3.0.15_rev4
+                           Version: 3.0.15_rev7
                            Outgoing License: MIT
                            License File:
-                           nxpvee-mimxrt595-evk-round-bsp/sdk_overlay/middleware/vglite/LICENSE.txt
+                           bsp/sdk_overlay/middleware/vglite/LICENSE.txt
                            Format: source code
                            Description: VeriSilicon's platform independent
                            VGLite Graphics library
-                           Location: nxpvee-mimxrt595-evk-round-bsp/sdk_overlay/middleware/vglite
+                           Location: bsp/sdk_overlay/middleware/vglite
                            Origin: VeriSilicon (http://www.verisilicon.com/)
                            Url: http://www.verisilicon.com/
 
@@ -89,11 +91,11 @@ mcufont                    Name: mcufont
                            Version: 1.0
                            Outgoing License: MIT
                            License File:
-                           nxpvee-mimxrt595-evk-round-bsp/sdk_overlay/middleware/vglite/font/mcufont/LICENSE
+                           bsp/sdk_overlay/middleware/vglite/font/mcufont/LICENSE
                            Format: source code
                            Description: Font rendering library for
                            microcontrollers
-                           Location: nxpvee-mimxrt595-evk-round-bsp/sdk_overlay/middleware/vglite/font/mcufont
+                           Location: bsp/sdk_overlay/middleware/vglite/font/mcufont
                            Origin: Petteri Aimonen
                            (https://github.com/PetteriAimonen)
                            Url: https://github.com/mcufont/mcufont
@@ -102,10 +104,10 @@ FreeType                   Name: FreeType
                            Version: 2.11
                            Outgoing License: FTL
                            License File:
-                           nxpvee-mimxrt595-evk-round-bsp/projects/microej/thirdparty/freetype/FTL.TXT
+                           bsp/projects/microej/thirdparty/freetype/FTL.TXT
                            Format: source code
                            Description: Software library to render fonts
-                           Location: nxpvee-mimxrt595-evk-round-bsp/projects/microej/thirdparty/freetype
+                           Location: bsp/projects/microej/thirdparty/freetype
                            Origin: The FreeType Project (http://freetype.org/license.html)
                            Url: https://gitlab.freedesktop.org/freetype/freetype.git
 
@@ -113,10 +115,10 @@ HarfBuzz                   Name: HarfBuzz
                            Version: 4.2.1
                            Outgoing License: Old MIT
                            License File:
-                           nxpvee-mimxrt595-evk-round-bsp/projects/microej/thirdparty/harfbuzz/COPYING
+                           bsp/projects/microej/thirdparty/harfbuzz/COPYING
                            Format: source code
                            Description: Text shaping library
-                           Location: nxpvee-mimxrt595-evk-round-bsp/projects/microej/thirdparty/harfbuzz
+                           Location: bsp/projects/microej/thirdparty/harfbuzz
                            Origin: HarfBuzz Project (https://harfbuzz.github.io/)
                            Url: https://github.com/harfbuzz/harfbuzz
 
@@ -124,48 +126,48 @@ SystemView Target Sources  Name: SystemView Target Sources
                            Version: 2.52a
                            Outgoing License: SEGGER BSD
                            License File:
-                           nxpvee-mimxrt595-evk-round-bsp/projects/microej/thirdparty/systemview/LICENSE
+                           bsp/projects/microej/thirdparty/systemview/LICENSE
                            Format: source code
                            Description: Target code for real-time recording and visualization tool
-                           Location: nxpvee-mimxrt595-evk-round-bsp/projects/microej/thirdparty/systemview
-                                     nxpvee-mimxrt595-evk-round-bsp/projects/microej/thirdparty/systemview-freertos
+                           Location: bsp/projects/microej/thirdparty/systemview
+                                     bsp/projects/microej/thirdparty/systemview-freertos
                            Origin: SEGGER (https://www.segger.com)
                            Url: https://www.segger.com/downloads/systemview/SystemView_Src_V252a.zip
 
 SimpleGFX                  Name: SimpleGFX
                            Version: 0.1
                            Outgoing License: BSD-3-Clause
-                           License File: nxpvee-mimxrt595-evk-round-apps/LICENSE.txt
+                           License File: microej/apps/LICENSE.txt
                            Format: source code
                            Description: example of a graphics VEE application
-                           Location: nxpvee-mimxrt595-evk-round-apps/src/main/java/com/nxp/simpleGFX
+                           Location: microej/apps/src/main/java/com/nxp/simpleGFX
                            Origin: NXP (BSD-3-Clause)
 
 SimpleGFX MOCK             Name: SimpleGFX Mock
                            Version: 0.1
                            Outgoing License: BSD-3-Clause
-                           License File: nxpvee-mimxrt595-evk-round-mock/LICENSE.txt
+                           License File: microej/mock/LICENSE.txt
                            Format: source code
                            Description: Mock the SimpleGFX natives.
-                           Location: nxpvee-mimxrt595-evk-round-mock/src/main/java/com/nxp/
+                           Location: microej/mock/src/main/java/com/nxp/
                            Origin: NXP (BSD-3-Clause)
 
 AnimatedMascot             Name: AnimatedMascot
                            Version: 0.1
                            Outgoing License: BSD-3-Clause
-                           License File: nxpvee-mimxrt595-evk-round-apps/LICENSE.txt
+                           License File: microej/apps/LICENSE.txt
                            Format: source code
                            Description: VEE application demonstrating vectorial animation
-                           Location: nxpvee-mimxrt595-evk-round-apps/src/main/java/com/nxp/animatedMascot
+                           Location: microej/apps/src/main/java/com/nxp/animatedMascot
                            Origin: NXP (BSD-3-Clause)
 
 DEMO-WEARABLE-VG MOCK      Name: Demo-Wearable-VG Mock
                            Version: 1.0.0
                            Outgoing License: BSD-3-Clause
-                           License File: nxpvee-mimxrt595-evk-round-mock/LICENSE.txt
+                           License File: microej/mock/LICENSE.txt
                            Format: source code
                            Description: Mock the Demo-Wearable-VG natives.
-                           Location: nxpvee-mimxrt595-evk-round-mock/src/main/java/com/microej/
+                           Location: microej/mock/src/main/java/com/microej/
                            Origin: MicroEJ
 
 MicroEJ BSP                Name: MicroEJ BSP
@@ -174,7 +176,7 @@ MicroEJ BSP                Name: MicroEJ BSP
                            License File: Licenses/COPYING-BSD-3
                            Format: source code
                            Description: Board support package for i.MX RT595
-                           Location: nxpvee-mimxrt595-evk-round-bsp/projects/microej (excluding subdirectory
+                           Location: bsp/projects/microej (excluding subdirectory
                            thirdparty)
                            Origin: MicroEJ (https://www.microej.com/)
 
@@ -184,7 +186,7 @@ MicroEJ EDC                Name: Embedded Device Configuration (EDC)
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Implementation of the minimal standard runtime environment for
                            embedded devices
-                           Location: dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/runtime.html?highlight=edc#embedded-device-configuration-edc
 
@@ -193,7 +195,7 @@ MicroEJ BON                Name: Beyond Profile (BON)
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Control memory usage and start-up sequences
-                           Location: dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/runtime.html?highlight=edc#beyond-profile-bon
 
@@ -202,7 +204,7 @@ External Resource Loader   Name: External Resource Loader
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Allows use of external resources
-                           Location: dependency of nxpvee-mimxrt595-evk-round-configuration/imxrt595evk.platform
+                           Location: dependency of microej/vee-port-configuration/imxrt595evk.platform
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/VEEPortingGuide/externalResourceLoader.html
 
@@ -211,44 +213,62 @@ JAVAFX                     Name: JavaFX
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Library to create Java user interfaces. Used by Demo-Wearable-VG mock.
-                           Location: dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/VEEPortingGuide/mock.html#javafx
                            Url: https://openjfx.io/
 
 KF                         Name: Kernel Features (KF)
-                           Version: 1.6
+                           Version: 1.7
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Java implementation of the Multi-Sandbox features
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/VEEPortingGuide/appendix/javalibs/kf.html
 
 MicroUI                    Name: MicroUI
-                           Version: 3.1.0
+                           Version: 3.5
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
-                           Description: Enable the creation of user interface in Java
-                           Location: dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Description: MicroUI API module.
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroUI/index.html?highlight=microui
 
+MicroUI Pack               Name: MicroUI Pack
+                           Version: 14.0.1
+                           Outgoing License: MicroEJ SDK EULA
+                           License File: Licenses/MICROEJ_SDK_EULA.txt
+                           Description: Enable the creation of user interface in Java
+                           Location: dependency of microej/vee-port-configuration/module.ivy
+                           Origin: MicroEJ
+                           Url: https://docs.microej.com/en/latest/VEEPortingGuide/ui.html
+
 MicroVG                    Name: MicroVG
-                           Version: 1.1.1
+                           Version: 1.4.0
+                           Outgoing License: MicroEJ SDK EULA
+                           License File: Licenses/MICROEJ_SDK_EULA.txt
+                           Description: MicroVG API module.
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
+                           Origin: MicroEJ
+                           Url: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroVG/index.html?highlight=microvg
+
+MicroVG Pack               Name: MicroVG Pack
+                           Version: 1.5.1
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Vector drawing library
-                           Location: dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
-                           Url: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MicroVG/index.html?highlight=microvg
+                           Url: https://docs.microej.com/en/latest/VEEPortingGuide/vg.html
 
 MWT                        Name: Micro Widget Toolkit 
                            Version: 3.2.1
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Simplify the creation and use of graphical user interface widgets in Java
-                           Location: dependency of nxpvee-mimxrt595-evk-round-apps/module.ivy
+                           Location: dependency of microej/imageGenerator/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/MWT/index.html
 
@@ -257,7 +277,7 @@ NLS                        Name: Native Language Support (NLS)
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Support translation in different languages
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/nls.html
 
@@ -266,7 +286,7 @@ PUMP                       Name: Pump
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Used by MicroUI to manage events
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
 
 RESOURCE MANAGER           Name: Resource Manager
@@ -274,7 +294,7 @@ RESOURCE MANAGER           Name: Resource Manager
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Manage resources
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
 
 SNI                        Name: Simple Native Interface (SNI)
@@ -282,7 +302,7 @@ SNI                        Name: Simple Native Interface (SNI)
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Allow to call native method from managed code
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/VEEPortingGuide/sni.html
 
@@ -291,7 +311,7 @@ TRACE                      Name: Trace
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Record integer based events for debugging and monitoring purposes
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/trace.html#event-tracing
 
@@ -300,7 +320,7 @@ WATCHDOG                   Name: Watchdog
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Watchdog used by MicroUI
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
 
 WIDGET                     Name: Widget Toolkit 
@@ -308,7 +328,7 @@ WIDGET                     Name: Widget Toolkit
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Provides very common widgets with basic implementations
-                           Location: dependency of nxpvee-mimxrt595-evk-round-fp/module.ivy
+                           Location: dependency of microej/front-panel/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/ApplicationDeveloperGuide/UI/Widgets/widget.html
 
@@ -317,7 +337,7 @@ DRAWING                    Name: Drawing
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Contains shapes rendering and image with transformation rendering algorithms
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-apps/module.ivy
+                           Location: transitive dependency of microej/imageGenerator/module.ivy
                            Origin: MicroEJ
                            Url: https://repository.microej.com/javadoc/microej_5.x/apis/ej/drawing/package-summary.html
 
@@ -326,7 +346,7 @@ BASICTOOL                  Name: Basic Tool
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Miscellaneous tools
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-apps/module.ivy
+                           Location: transitive dependency of microej/imageGenerator/module.ivy
                            Origin: MicroEJ
                            Url: https://repository.microej.com/javadoc/microej_5.x/apis/ej/basictool/package-summary.html
 
@@ -335,7 +355,7 @@ COLLECTIONS                Name: Collections
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Static methods that operate on or return collections
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-apps/module.ivy
+                           Location: transitive dependency of microej/imageGenerator/module.ivy
                            Origin: MicroEJ
                            Url: https://repository.microej.com/javadoc/microej_5.x/apis/index.html?java/util/Collections.html
 
@@ -344,7 +364,7 @@ JUNIT                      Name: Junit
                            Outgoing License: Eclipse Public License - v 1.0
                            License File: https://spdx.org/licenses/EPL-1.0.html
                            Description: Unit test framework
-                           Location: dependency of nxpvee-mimxrt595-evk-round-apps/module.ivy
+                           Location: dependency of microej/imageGenerator/module.ivy
                            Origin: JUNIT
                            Url: https://junit.org/
 
@@ -353,7 +373,7 @@ FRONTPANEL                 Name: Frontpanel
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Frontpanel creation library
-                           Location: dependency of nxpvee-mimxrt595-evk-round-fp/module.ivy
+                           Location: dependency of microej/front-panel/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/PlatformDeveloperGuide/frontpanel.html
 
@@ -362,7 +382,7 @@ MICROVG FRONTPANEL         Name: MicroVG Frontpanel
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Provides native implementation of equivalent VectorGraphics classes to Front Panel projects
-                           Location: transitive dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: transitive dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
 
 FRAMEWORK                  Name: Frontpanel Framework Library
@@ -370,7 +390,7 @@ FRAMEWORK                  Name: Frontpanel Framework Library
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Frontpanel framework creation library
-                           Location: dependency of nxpvee-mimxrt595-evk-round-fp/module.ivy
+                           Location: dependency of microej/front-panel/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/PlatformDeveloperGuide/frontpanel.html
 
@@ -378,7 +398,7 @@ HILEngine                  Name: Hardware In the Loop interface
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Simulates Java-to-C calls.
-                           Location: dependency of nxpvee-mimxrt595-evk-round-mock/module.ivy
+                           Location: dependency of microej/mock/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/PlatformDeveloperGuide/simulation.html
 
@@ -387,15 +407,15 @@ IMAGEGENERATOR             Name: Image Generator
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: Off-board tool in charge of generating image data
-                           Location: dependency of nxpvee-mimxrt595-evk-round-imageGenerator/module.ivy
+                           Location: dependency of microej/imageGenerator/module.ivy
                            Origin: MicroEJ
                            Url: https://docs.microej.com/en/latest/PlatformDeveloperGuide/uiImageGenerator.html
 
 ARCHITECTURE               Name: Microej Architecture Image Generator
-                           Version: flopi4G25-7.20.1
+                           Version: flopi4G25-8.1.1
                            Outgoing License: MicroEJ SDK EULA
                            License File: Licenses/MICROEJ_SDK_EULA.txt
                            Description: MicroEJ Architecture for GNU Tools for ARM Embedded Processors 4.8.
-                           Location: dependency of nxpvee-mimxrt595-evk-round-configuration/module.ivy
+                           Location: dependency of microej/vee-port-configuration/module.ivy
                            Origin: MicroEJ
-                           Url: https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/7.20.1/
+                           Url: https://repository.microej.com/architectures/com/microej/architecture/CM4/CM4hardfp_GCC48/flopi4G25/8.1.1/

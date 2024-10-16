@@ -1,5 +1,5 @@
 #
-# Copyright 2023 NXP
+# Copyright 2023-2024 NXP
 #
 # SPDX-License-Identifier: BSD-3-Clause
 #
@@ -8,21 +8,15 @@ ifeq ($(OS),Windows_NT)
 S2SEXE=$(BSP_DIR)/projects/common/scripts/s2s.bat
 LINK=&&
 TOUCH=cmd /c type nul >
+FIND_JAVA_FILES_IN_APP_DIR=$(shell cmd /c dir /s /b "$(subst /,\,$(APP_DIR))\*.java")
 else
 S2SEXE=$(BSP_DIR)/projects/common/scripts/s2s.sh
 LINK=;
 TOUCH=touch
+FIND_JAVA_FILES_IN_APP_DIR=$(shell find $(APP_DIR) -name "*.java")
 endif
 
-.PRECIOUS: .java.fp .java.mock .java.configuration .%.java.app
-
-.java.fp:
-	cd $(FP_DIR) $(LINK) $(MICROEJ_BUILDKIT_PATH_VAR)/bin/mmm publish \
-		-Declipse.home="$(ECLIPSE_HOME)" \
-		-Dcom.microej.platformbuilder.architecture.usage=$(USAGE) \
-		$(MODULE_REPOSITORY_SETTINGS) \
-	 $(JAVA_VERBOSE)
-	$(TOUCH) $@
+.PRECIOUS: .java.mock .java.configuration .%.java.app
 
 .java.mock:
 	cd $(MOCK_DIR) $(LINK) $(MICROEJ_BUILDKIT_PATH_VAR)/bin/mmm publish \
@@ -32,8 +26,8 @@ endif
 		$(JAVA_VERBOSE)
 	$(TOUCH) $@
 
-.java.configuration:
-	cd $(CONF_DIR) $(LINK) $(MICROEJ_BUILDKIT_PATH_VAR)/bin/mmm publish  \
+.java.configuration: $(CONF_DIR)/module.ivy
+	cd $(CONF_DIR) $(LINK) $(MICROEJ_BUILDKIT_PATH_VAR)/bin/mmm publish $(PUBLISH_MODE) \
 		$(PUBLISH_ARTIFACTS) \
 		-Declipse.home="$(ECLIPSE_HOME)" \
 		-Dcom.microej.platformbuilder.architecture.usage=$(USAGE) \
@@ -47,27 +41,18 @@ endif
 javasec.prop :
 	$(MICROEJ_SEC)
 
-.java.test.core: javasec.prop
-	cd $(VAL_DIR)/core/java-testsuite-runner-core  $(LINK) $(MICROEJ_BUILDKIT_PATH_VAR)/bin/mmm publish  \
+$(addprefix .java.test.,$(VALIDATIONS)): javasec.prop
+	cd $(TEST_DIR$@) $(LINK) $(EXPORT) TEST_TYPE="ARMGCC" $(LINK) $(MICROEJ_BUILDKIT_PATH_VAR)/bin/mmm publish  \
 		-Declipse.home="$(ECLIPSE_HOME)" \
 		$(MODULE_REPOSITORY_SETTINGS) \
 		-Dcom.microej.platformbuilder.architecture.usage=$(USAGE) \
 		-Dplatform-loader.target.platform.dir=$(PLAT_DIR)/source \
 		-Ddeploy.bsp.root.dir=$(BSP_DIR) \
 		-Dlaunch.properties.jvm="-Djava.security.properties=$(BASE_DIR)/javasec.prop" \
+		-D"local.repo.url=$(BASE_DIR)/test_results/" \
 		-Dplatform-launcher.platform.dir=$(PLAT_DIR)/source $(JAVA_VERBOSE)
 
-.java.test.ui: javasec.prop
-	cd $(VAL_DIR)/ui/ui3/java-testsuite-runner-ui3  $(LINK) $(MICROEJ_BUILDKIT_PATH_VAR)/bin/mmm publish  \
-		-Declipse.home="$(ECLIPSE_HOME)" \
-		$(MODULE_REPOSITORY_SETTINGS) \
-		-Dcom.microej.platformbuilder.architecture.usage=$(USAGE) \
-		-Dplatform-loader.target.platform.dir=$(PLAT_DIR)/source \
-		-Ddeploy.bsp.root.dir=$(BSP_DIR) \
-		-Dlaunch.properties.jvm="-Djava.security.properties=$(BASE_DIR)/javasec.prop" \
-		-Dplatform-launcher.platform.dir=$(PLAT_DIR)/source $(JAVA_VERBOSE)
-
-.%.java.app: javasec.prop
+.%.java.app: javasec.prop $(APP_DIR)/module.ivy $(FIND_JAVA_FILES_IN_APP_DIR)
 	cd $(APP_DIR) $(LINK) $(MICROEJ_BUILDKIT_PATH_VAR)/bin/mmm publish  \
 		-Declipse.home="$(ECLIPSE_HOME)" \
 		$(MODULE_REPOSITORY_SETTINGS) \
@@ -80,10 +65,10 @@ javasec.prop :
 	$(call del_file,.*.java.app)
 	$(TOUCH) $@
 
-nxpvee-validation.prj: clean .java.fp .java.mock .java.configuration .java.test.s2s .java.test.core .java.test.ui
+nxpvee-validation.prj: clean .java.mock .java.configuration .java.test.s2s $(addprefix .java.test.,$(VALIDATIONS))
 	echo "done"
 
-%.prj: .java.fp .java.mock .java.configuration .%.java.app
+%.prj: .java.mock .java.configuration .%.java.app
 	make -C $(BSP_DIR)/projects/$(basename $@)/sdk_makefile
 
 $(addsuffix -flash,$(PROJS)):
@@ -102,7 +87,7 @@ $(addsuffix -gdb_cmsisdap,$(PROJS)):
 	make $(@:%-gdb_cmsisdap=%).prj
 	make -C $(BSP_DIR)/projects/$(@:%-gdb_cmsisdap=%)/sdk_makefile gdb_cmsisdap
 
-$(addsuffix -java_run,$(PROJS)): .java.fp .java.mock .java.configuration
+$(addsuffix -java_run,$(PROJS)): .java.mock .java.configuration
 	cd $(APP_DIR)  $(LINK) $(MICROEJ_BUILDKIT_PATH_VAR)/bin/mmm run  \
 		-Declipse.home="$(ECLIPSE_HOME)" \
 		$(MODULE_REPOSITORY_SETTINGS) \
@@ -111,7 +96,7 @@ $(addsuffix -java_run,$(PROJS)): .java.fp .java.mock .java.configuration
 		-Dapplication.main.class=$(if $(MAIN),$(MAIN),$(MAIN.$(@:%-java_run=%).java.app)) \
 		-Dplatform-launcher.platform.dir=$(PLAT_DIR)/source $(JAVA_VERBOSE)
 
-$(addsuffix -java_rebuild,$(PROJS)): .java.fp .java.mock .java.configuration
+$(addsuffix -java_rebuild,$(PROJS)): .java.mock .java.configuration
 	$(call del_file,.*.java.app)
 	make .$(@:%-java_rebuild=%).java.app
 

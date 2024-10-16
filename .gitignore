@@ -1,20 +1,25 @@
-nxpvee-mimxrt595-evk-round-fp/lib/
-nxpvee-mimxrt595-evk-round-configuration/target~/
-nxpvee-mimxrt595-evk-round-configuration/dropins/include/
-nxpvee-mimxrt595-evk-round-configuration/dropins/javaLibs/
-nxpvee-mimxrt595-evk-round-configuration/dropins/mocks/
-nxpvee-mimxrt595-evk-round-configuration/dropins/scripts/
-nxpvee-mimxrt595-evk-round-configuration/dropins/tools/license-checker.jar
-nxpvee-mimxrt595-evk-round-configuration/dropins/tools/imagegenerator-vectorimage.jar
-nxpvee-mimxrt595-evk-round-configuration/dropins/resources/os/
-nxpvee-mimxrt595-evk-round-configuration/dropins/workbenchExtension_*
-nxpvee-mimxrt595-evk-round-bsp/projects/microej/platform/
-MIMXRT595-*-CM4hardfp_GCC48-*
-nxpvee-mimxrt595-evk-round-imageGenerator/bin/
-nxpvee-mimxrt595-evk-round-configuration/dropins/scripts/init-microvg/microvginit.xml
-nxpvee-mimxrt595-evk-round-bsp/projects/microej/vglite_patch/
+microej/front-panel/lib/
+microej/vee-port-configuration/target~/
+microej/vee-port-configuration/dropins/include/
+microej/vee-port-configuration/dropins/javaLibs/
+microej/vee-port-configuration/dropins/mocks/
+microej/vee-port-configuration/dropins/scripts/
+microej/vee-port-configuration/dropins/tools/license-checker.jar
+microej/vee-port-configuration/dropins/tools/imagegenerator-vectorimage.jar
+microej/vee-port-configuration/dropins/resources/os/
+microej/vee-port-configuration/dropins/workbenchExtension_*
+microej/vee-port-configuration/dropins/scripts/init-microvg/microvginit.xml
+microej/imageGenerator/bin/
+microej/apps/launchers/*.properties
+microej/MIMXRT595-*-CM4hardfp_GCC48-*
 
-nxpvee-mimxrt595-evk-round-apps/launchers/*.properties
+bsp/projects/microej/vglite_patch/
+bsp/projects/microej/platform/
+bsp/projects/nxpvee-ui/armgcc/mcux_include.json
+bsp/projects/nxpvee-ui/armgcc/tree_version.c
+bsp/mcux-sdk
+bsp/projects/nxpvee-ui/armgcc/debug
+bsp/projects/nxpvee-ui/armgcc/release
 
 # ctags files
 tags
@@ -41,6 +46,3 @@ CMakeCache.txt
 .ninja_deps
 build.ninja
 rules.ninja
-nxpvee-mimxrt595-evk-round-bsp/projects/nxpvee-ui/armgcc/tree_version.c
-nxpvee-mimxrt595-evk-round-bsp/mcux-sdk
-nxpvee-mimxrt595-evk-round-bsp/projects/nxpvee-ui/armgcc/debug
